@@ -1,14 +1,13 @@
 from django.contrib import admin
-from django.urls import path,include
-from api import views
-from rest_framework import routers
-
-#from rest_framework_jwt.views import obtain_jwt_token
-
-
+from django.urls import path
+from costomer import views
 urlpatterns = [
-     path('', views.apisList.as_view() ,name="apisList"),
-     path('', views.put.as_view() ,name="put"),
-    path('api_tamplate/', views.api_tamplate ,name="api_tamplate"),
-    path('api_register/', views.api_register ,name="api_register"),
-    ]
+    path('register/',views.register ,name='register'),
+    path('signin/',views.signin ,name="signin"),
+    path('logout/',views.logout_view ,name="logout"),
+    path('buy/',views.buy ,name="buy"),
+    path('orders/',views.orders ,name="orders"),
+    
+    #path('pd',views.pd ,name="pd"),
+]
+
