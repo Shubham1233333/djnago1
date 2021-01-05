@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api</title>
+</head>
+<body>
+ {% load static %}
+  {% load cart %}
+  <link rel="stylesheet" href="{% static 'costomer/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'products/images/style/css.css' %}">
+    <table>
+        <form action="{% url 'api_register' %}" method="POST">
+            {% csrf_token %}
+            {{user}}
+        </table>
+            <button type="submit">Register</button>
+        </form>
+    
+</body>
+</html>

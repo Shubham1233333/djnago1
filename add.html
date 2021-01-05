@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+    input {
+        width: 140.5%;
+        margin-bottom: 0.5cm;
+
+    }
+
+    textera {
+        margin-bottom: 0.5cm;
+    }
+
+    .container {
+        width: 50%;
+        border: 1px solid red;
+        margin-left: 8cm;
+        margin-top: 0.5cm;
+        background-color: skyblue;
+        display: block;
+        height: 13cm;
+    }
+
+    button {
+        color: black;
+        margin-left: 8cm;
+        margin-top: 0.3cm;
+        width: 50%;
+        background-color: green;
+    }
+
+    #id_description {
+        margin-top: 3cm;
+        width: 141%;
+    }
+    body{
+        background: url({% static "products/images/static.png" %})
+    }
+   
+</style>
+
+<body>
+
+
+    
+  
+
+    <div class="container" cols="40" rows="10">
+        <table class="col-sm-4">
+            <form action="">
+                {{obj}}
+        </table>
+    </div>
+    <button type="submit">Add product</button>
+    </form>
+
+
+
+
+</body>
+
+</html>

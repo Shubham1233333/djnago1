@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>amazon</title>
+</head>
+
+<body>
+  {% load static %}
+  {% load cart %}
+  <link rel="stylesheet" href="{% static 'costomer/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'products/images/style/css.css' %}">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Samanzone</a>
+
+
+      
+      
+
+
+
+
+
+
+      
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <a class="nav-link active" href="{% url 'logout' %}">log-out</a>
+          <a class="nav-link active" href="/api">API</a>
+
+
+
+          {% else %}
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+            LOG-IN
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <br>
+                      <form action="{% url 'signin' %}" method="POST">
+                        {% csrf_token %}
+                      <label for="uname"><b>Username</b></label>
+                      <input type="text" placeholder="Enter Username" name="username" required></br>
+                      <br>
+                      <label for="psw"><b>Password</b></label>
+                      <input type="password" placeholder="Enter Password" name="password" required></br>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+
+                    <button type="submit"  class="btn btn-primary btn-lg">Sign-in</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <script>
+          $('#exampleModal').on('show.bs.modal', event => {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            // Use above variables to manipulate the DOM
+
+          });
+        </script>
+        
+        <a class="btn btn-primary btn-lg" style="margin-left:1cm ;" href="{% url 'api_register' %}">SIGN-UP-FOR-API</a>
+    
+        <a class="btn btn-primary btn-lg" style="margin-left:1cm ;" href="/api">API</a>
+        {% endif %}
+
+      </div>
+    </div>
+    </div>
+    <div>
+
+      
+
+
+    </div>
+
+  </nav>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>

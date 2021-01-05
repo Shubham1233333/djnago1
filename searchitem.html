@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>amazon</title>
+</head>
+
+<body>
+    {% load static %}
+    {% load cart %}
+    <link rel="stylesheet" href="{% static 'costomer/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'products/images/style/css.css' %}">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Samanzone</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+  
+  
+        </button>
+  
+        <div class="btn-group" role="group" aria-label="">
+          <button type="button" class="btn "></button>
+          <button type="button" class="btn "></button>
+          <div class="btn-group" role="group">
+            <button id="dropdownId" type="button" class="btn-sm dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+  
+              All</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              {% for c in ca %}
+  
+              <a class="dropdown-item" href="/?catogery={{c.id}}">{{c.name}}</a>
+  
+  
+  
+              {% endfor %}
+  
+  
+            </div>
+          </div>
+        </div>
+  
+  
+  
+  
+  
+  
+        <div class="container">
+          <form class="d-flex" action="/query" method="GET">
+  
+            <input id="search" class="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="query">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+  
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{% url 'add' %}">Add-Product</a>
+            <a class="nav-link active" href="{% url 'signin' %}">Sign-in</a>
+            <a class="nav-link active" href="{% url 'register' %}">sign-up</a>
+            <a class="nav-link active" href="#">conact-us</a>
+  
+          </div>
+        </div>
+      </div>
+      <div>
+  
+        <h6 style="color: red;">{{sum}}</h6>
+  
+        <img id="cart" src="{% static 'products/images/cart.png' %}   " height="40">
+  
+        <a href="{% url 'cart' %}" id='cart'>
+          <h5 style="color: black;">cart</h5>
+        </a>
+  
+  
+      </div>
+  
+    </nav>
+ <h2>your search results:-</h2> 
+ {% if allproduct|length < 1 %}
+ Your search for -<b> {{query}}</b> -did not match any documents.
+
+Suggestions: <br>
+
+Make sure that all words are spelled correctly.
+ Try different keywords. <br>
+ Try more general keywords. <br>
+ Try fewer keywords. <br>
+
+ {% endif %}
+  {% for p in allproduct%}
+        <div class="card ml-3" style="width:18rem;">
+
+          <div class="card-body ">
+
+
+            <img src="/media/{{p.pic}}" alt="" height="100">
+
+
+          </div>
+
+          {{p.list_price}}
+          <s>{{p.price}}</s>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <h5 class="card-title">{{p.name}}</h5>
+
+          <form action="/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="product" value="{{p.id}}" id="" hidden>
+            <button type="submit" class="btn btn-primary" style="background-color:chocolate;color:  black;">Add TO
+              CART</button>
+          </form>
+
+
+
+        </div>
+
+
+
+        {% endfor %}
+      </div>
+    </div>
+
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  
+
+  
+
+</body>
+
+</html>
